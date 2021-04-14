@@ -2,7 +2,7 @@
   <div class="ui-whiteboard-controls component">
     <div class="toolbar--box--top-left">
       <div class="logo--box">
-        <a href="/"><img src="../../assets/images/logo.svg" /></a>
+        <a href="/"><img src="../../assets/images/logo.svg" alt="logo" /></a>
       </div>
       <div class="toolbar toolbar--big flex mr--1">
         <div class="toolbar--board toolbar--board--item flex">
@@ -53,15 +53,19 @@
         <div>
           <div class="toolbar toolbar--vertical">
             <ul class="tools--menu mgt-0 mgb-0">
-              <!-- Point -->
+              <!-- Pointer -->
               <li class="tools--item">
-                <div class="tools--item--button">
+                <div 
+                  class="tools--item--button"
+                  @click="toggleMousePointerToolbox">
                   <font-awesome-icon icon="mouse-pointer" />
                 </div>
               </li>
               <!-- Pencil -->
               <li class="tools--item">
-                <div class="tools--item--button">
+                <div 
+                  class="tools--item--button"
+                  @click="togglePencilToolbox">
                   <font-awesome-icon icon="pencil-alt" />
                 </div>
               </li>
@@ -151,7 +155,9 @@
 
               <!-- Text -->
               <li class="tools--item">
-                <div class="tools--item--button">
+                <div 
+                  class="tools--item--button"
+                  @click="toggleTextBox">
                   <font-awesome-icon icon="font" />
                 </div>
               </li>
@@ -188,7 +194,7 @@ export default {
       isShapeToolBoxOpened: false,
       isExportActionsOpened: false,
       colorPicked: "black",
-      shapeIsSelected: ["fas", "square"], // ['far', 'square'], ['fas', 'circle'], ['far', 'circle']
+      shapeIsSelected: ["fas", "square"],
     };
   },
   mounted() {
@@ -196,6 +202,15 @@ export default {
     this.isExportActionsOpened = false;
   },
   methods: {
+    toggleMousePointerToolbox() {
+      EventBus.emit(customEvents.canvasTools.drawing, { drawingMode: false });
+      this.isShapeToolBoxOpened = false;
+      this.isExportActionsOpened = false;
+    },
+    togglePencilToolbox() {
+      EventBus.emit(customEvents.canvasTools.drawing, { drawingMode: true });
+      this.isShapeToolBoxOpened = this.isExportActionsOpened = false;
+    },
     toggleExportDropdown() {
       this.isExportActionsOpened = !this.isExportActionsOpened;
       this.isShapeToolBoxOpened = false;
@@ -229,6 +244,9 @@ export default {
       EventBus.emit(customEvents.canvasTools.circle, {
         fill: this.colorPicked,
       });
+    },
+    toggleTextBox() {
+      EventBus.emit(customEvents.canvasTools.textbox, {});
     },
   },
 };

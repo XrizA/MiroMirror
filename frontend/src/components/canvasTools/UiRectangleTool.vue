@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-rectangle component"></div>
+  <div class="ui-rectangle-tool component"></div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
   },
   data() {
     return {
-      canvas: this.canvasProp,
+      canvas: null,
     };
   },
   mounted() {

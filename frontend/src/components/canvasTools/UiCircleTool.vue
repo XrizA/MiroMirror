@@ -1,5 +1,5 @@
 <template>
-  <div class="ui-circle component"></div>
+  <div class="ui-circle-tool component"></div>
 </template>
 
 <script>
@@ -19,6 +19,8 @@ export default {
   },
   mounted() {
     EventBus.on(customEvents.canvasTools.circle, (payload) => {
+      this.canvas = this.canvasProp;
+      this.canvas.isDrawingMode = false;
       this.createCircle(payload);
     });
   },
