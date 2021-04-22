@@ -223,7 +223,16 @@
   position: relative;
 }
 
-/* margin */
+/* utils */
+
+.pd5 {
+  padding: 5px !important;
+}
+
+.mg25-5 {
+  margin: 25px 5px !important;
+}
+
 .mgb-0 {
   margin-bottom: 0 !important;
 }
@@ -242,4 +251,12 @@
 
 .mgr10 {
   margin-right: 10px !important;
+}
+
+.top170 {
+  top: 170px;
+}
+
+.pdb5 {
+  padding-bottom: 20px !important;
 }

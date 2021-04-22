@@ -4,5 +4,6 @@ export default {
     rectangle: "EventTrigger_Rectangle",
     circle: "EventTrigger_Circle",
     textbox: 'EventTrigger_Textbox',
+    stickyNote: 'EventTrigger_StickyNote'
   },
 };

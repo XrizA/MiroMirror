@@ -2,9 +2,9 @@
 
 ## Build Setup
 ```
-# install dependencies
+# Install Dependencies
 $ yarn install
 
-# vue cli ui
+# Using the GUI
 $ vue ui
 ```

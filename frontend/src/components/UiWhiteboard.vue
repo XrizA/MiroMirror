@@ -5,6 +5,7 @@
     <UiRectangleTool :canvasProp="canvas" />
     <UiCircleTool :canvasProp="canvas" />
     <UiTextboxTool :canvasProp="canvas" />
+    <UiStickyNoteTool :canvasProp="canvas" />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import UiDrawingTool from "@/components/canvasTools/UiDrawingTool";
 import UiRectangleTool from "@/components/canvasTools/UiRectangleTool";
 import UiCircleTool from "@/components/canvasTools/UiCircleTool";
 import UiTextboxTool from "@/components/canvasTools/UiTextboxTool";
+import UiStickyNoteTool from '@/components/canvasTools/UiStickyNoteTool';
 
 export default {
   name: "UiWhiteboard",
@@ -23,6 +25,7 @@ export default {
     UiRectangleTool,
     UiCircleTool,
     UiTextboxTool,
+    UiStickyNoteTool
   },
   data() {
     return {
