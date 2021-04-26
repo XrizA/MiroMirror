@@ -55,17 +55,16 @@
             <ul class="tools--menu mgt-0 mgb-0">
               <!-- Pointer -->
               <li class="tools--item">
-                <div 
+                <div
                   class="tools--item--button"
-                  @click="toggleMousePointerToolbox">
+                  @click="toggleMousePointerToolbox"
+                >
                   <font-awesome-icon icon="mouse-pointer" />
                 </div>
               </li>
               <!-- Pencil -->
               <li class="tools--item">
-                <div 
-                  class="tools--item--button"
-                  @click="togglePencilToolbox">
+                <div class="tools--item--button" @click="togglePencilToolbox">
                   <font-awesome-icon icon="pencil-alt" />
                 </div>
               </li>
@@ -73,14 +72,14 @@
               <!-- End -->
 
               <!-- Eraser -->
-              <li class="tools--item">
+              <!-- <li class="tools--item">
                 <div class="tools--item--button">
                   <font-awesome-icon icon="eraser" />
                 </div>
-              </li>
+              </li> -->
 
               <!-- Color palette -->
-              <li class="tools--item">
+              <!-- <li class="tools--item">
                 <div class="tools--item--button">
                   <font-awesome-icon icon="palette" />
                   <div
@@ -88,7 +87,7 @@
                     class="color--picked"
                   ></div>
                 </div>
-              </li>
+              </li> -->
 
               <!-- Shape -->
               <li class="tools--item">
@@ -123,7 +122,6 @@
                   />
                 </div>
               </li>
-              <!-- Shapes -->
               <div v-if="isShapeToolBoxOpened" class="toolbox fadeInLeft">
                 <ul class="tools--menu tools--menu--inline">
                   <!-- Rectangle -->
@@ -155,23 +153,84 @@
 
               <!-- Text -->
               <li class="tools--item">
-                <div 
-                  class="tools--item--button"
-                  @click="toggleTextBox">
+                <div class="tools--item--button" @click="toggleTextBox">
                   <font-awesome-icon icon="font" />
                 </div>
               </li>
 
               <!-- Sticky notes -->
               <li class="tools--item">
-                <div class="tools--item--button">
+                <div class="tools--item--button" @click="toggleStickyNotes">
                   <font-awesome-icon icon="sticky-note" />
                 </div>
               </li>
+              <div
+                v-if="isStickyNoteToolBoxOpened"
+                class="toolbox fadeInLeft top170"
+              >
+                <ul class="tools--menu tools--menu--inline pd5">
+                  <li class="tools--item mgt-0">
+                    <div
+                      class="tools--item--button mg25-5"
+                      @click="selectColor('#000000')"
+                    >
+                      <img
+                        src="../../assets/images/stickynote/black.svg"
+                        alt="black"
+                      />
+                    </div>
+                    <div 
+                      class="tools--item--button mg25-5"
+                      @click="selectColor('#8CB8DE')">
+                      <img
+                        src="../../assets/images/stickynote/blue.svg"
+                        alt="blue"
+                      />
+                    </div>
+                    <div 
+                      class="tools--item--button mg25-5"
+                      @click="selectColor('#58CA68')">
+                      <img
+                        src="../../assets/images/stickynote/green.svg"
+                        alt="green"
+                      />
+                    </div>
+                  </li>
+                  <li class="tools--item mgt-0">
+                    <div 
+                      class="tools--item--button mg25-5"
+                      @click="selectColor('#8A0000')">
+                      <img
+                        src="../../assets/images/stickynote/red.svg"
+                        alt="red"
+                      />
+                    </div>
+                    <div 
+                      class="tools--item--button mg25-5"
+                      @click="selectColor('#FFD54F')">
+                      <img
+                        src="../../assets/images/stickynote/yellow.svg"
+                        alt="yellow"
+                      />
+                    </div>
+                    <div 
+                      class="tools--item--button mg25-5"
+                      @click="selectColor('#FFFFFF')">
+                      <img
+                        src="../../assets/images/stickynote/white.svg"
+                        alt="white"
+                      />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- Sticky notes -->
 
               <!-- Background -->
               <li class="tools--item">
-                <div class="tools--item--button">
+                <div 
+                  class="tools--item--button"
+                  @click="swapBackground">
                   <font-awesome-icon icon="border-all" />
                 </div>
               </li>
@@ -193,31 +252,39 @@ export default {
     return {
       isShapeToolBoxOpened: false,
       isExportActionsOpened: false,
+      isStickyNoteToolBoxOpened: false,
       colorPicked: "black",
       shapeIsSelected: ["fas", "square"],
+      imageBackgroundIndex: 0,
     };
   },
   mounted() {
     this.isShapeToolBoxOpened = false;
     this.isExportActionsOpened = false;
+    this.isStickyNoteToolBoxOpened = false;
   },
   methods: {
     toggleMousePointerToolbox() {
       EventBus.emit(customEvents.canvasTools.drawing, { drawingMode: false });
       this.isShapeToolBoxOpened = false;
       this.isExportActionsOpened = false;
+      this.isStickyNoteToolBoxOpened = false;
     },
     togglePencilToolbox() {
       EventBus.emit(customEvents.canvasTools.drawing, { drawingMode: true });
-      this.isShapeToolBoxOpened = this.isExportActionsOpened = false;
+      this.isShapeToolBoxOpened = false;
+      this.isExportActionsOpened = false;
+      this.isStickyNoteToolBoxOpened = false;
     },
     toggleExportDropdown() {
       this.isExportActionsOpened = !this.isExportActionsOpened;
       this.isShapeToolBoxOpened = false;
+      this.isStickyNoteToolBoxOpened = false;
     },
     toggleShapeToolbox() {
       this.isShapeToolBoxOpened = !this.isShapeToolBoxOpened;
       this.isExportActionsOpened = false;
+      this.isStickyNoteToolBoxOpened = false;
     },
     toggleRectangle() {
       this.shapeIsSelected = ["far", "square"];
@@ -248,6 +315,24 @@ export default {
     toggleTextBox() {
       EventBus.emit(customEvents.canvasTools.textbox, {});
     },
+    toggleStickyNotes() {
+      this.isStickyNoteToolBoxOpened = !this.isStickyNoteToolBoxOpened;
+      this.isShapeToolBoxOpened = false;
+      this.isExportActionsOpened = false;
+    },
+    selectColor(color) {
+      EventBus.emit(customEvents.canvasTools.stickyNote, { color });
+    },
+    swapBackground() {
+      if (this.imageBackgroundIndex === 3) {
+        this.imageBackgroundIndex = 0;
+      }
+
+      const states = ['eisenhower', 'blank', 'dots'];
+      const element = states[this.imageBackgroundIndex];
+      EventBus.emit(customEvents.canvas.imageBackgroundChanged, element);
+      this.imageBackgroundIndex += 1;
+    }
   },
 };
 </script>

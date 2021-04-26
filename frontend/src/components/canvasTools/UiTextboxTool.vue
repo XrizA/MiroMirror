@@ -31,6 +31,7 @@ export default {
         top: 100,
         fill: "rgb(0,0,0)",
         fontFamily: "Arial",
+        // whitebirdData: { id: uuid },
       });
 
       const invisibleControls = ["mt", "mr", "ml", "mb"];

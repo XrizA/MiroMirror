@@ -6,6 +6,8 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import router from "./router";
 import fabric from "fabric";
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 library.add([
   fas.faDownload,
@@ -28,4 +30,5 @@ createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)
   .use(router)
   .use(fabric)
+  .use(VueAxios, axios)
   .mount("#app");
