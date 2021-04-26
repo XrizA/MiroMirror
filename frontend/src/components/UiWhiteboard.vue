@@ -5,7 +5,7 @@
     <UiRectangleTool :canvasProp="canvas" />
     <UiCircleTool :canvasProp="canvas" />
     <UiTextboxTool :canvasProp="canvas" />
-    <UiStickyNoteTool :canvasProp.sync="canvas" />
+    <UiStickyNoteTool :canvasProp="canvas" />
   </div>
 </template>
 
