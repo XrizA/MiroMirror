@@ -32,6 +32,7 @@ export default {
         radius: 75,
         stroke: options.stroke,
         fill: options.fill,
+        // whitebirdData: { id: uuid }
       });
 
       this.canvas.add(circle).setActiveObject(circle);

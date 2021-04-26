@@ -16,4 +16,18 @@
     * [@types/fabric](https://www.npmjs.com/package/@types/fabric)
   * [Konva.js](https://konvajs.org/)
     * [konva](https://www.npmjs.com/package/konva)
-  * [mitt](https://www.npmjs.com/package/mitt) (impl EventBus) 
+  * [mitt](https://www.npmjs.com/package/mitt) (impl EventBus)
+  * [axios](https://www.npmjs.com/package/axios) (Promise based HTTP client for the browser and node.js)
+  * [vue-axios](https://www.npmjs.com/package/vue-axios) (A small wrapper for integrating axios to Vuejs)
+
+<details>
+<summary>Development picture</summary>
+ 
+![dev1](frontend/img/dev1.png)
+![dev2](frontend/img/dev2.png)
+![dev3](frontend/img/dev3.png)
+![dev4](frontend/img/dev4.png)
+![dev5](frontend/img/dev5.png)
+![dev6](frontend/img/dev6.png)
+![dev7](frontend/img/dev7.png) 
+</details>

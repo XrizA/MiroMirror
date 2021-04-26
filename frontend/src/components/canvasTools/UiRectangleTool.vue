@@ -33,6 +33,7 @@ export default {
         height: 120,
         stroke: options.stroke,
         fill: options.fill,
+        // whitebirdData: { id: uuid }
       });
 
       this.canvas.add(rect).setActiveObject(rect);
